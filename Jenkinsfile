@@ -39,7 +39,7 @@ pipeline {
         stage("TRIVY"){
             steps{
                 catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    sh "trivy image --no-progress --exit-code 1 --severity MEDIUM,HIGH,CRITICAL --format table ${IMAGE_NAME}"
+                    sh "sudo trivy image --no-progress --exit-code 1 --severity MEDIUM,HIGH,CRITICAL --format table ${IMAGE_NAME}"
                  }   
             }
         }
