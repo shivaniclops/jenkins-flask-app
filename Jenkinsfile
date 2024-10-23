@@ -30,6 +30,13 @@ pipeline {
                 sh "sudo docker images"
             }
         }
+        stage("TRIVY"){
+            steps{
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                    sh "trivy image --no-progress --exit-code 1 --severity MEDIUM,HIGH,CRITICAL --format table ${IMAGE_TAG}"
+                 }   
+            }
+        }
         stage('Push Docker Image')
         {
             steps
