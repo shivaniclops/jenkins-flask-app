@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "Test Stage"
                 sh "whoami"
-                sh "ls -al ~/.kube/config"
+                // sh "ls -al ~/.kube/config"
             }
         }
         stage('Login to docker hub') {
