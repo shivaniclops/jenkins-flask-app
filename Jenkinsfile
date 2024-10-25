@@ -53,7 +53,7 @@ pipeline {
         }
         stage('Update Deployment File GitOps') {
             steps {
-                withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+                withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
                     sh """
                         git clone https://${GITHUB_TOKEN}@github.com/shivaniclops/flask-manifest.git
                         sed -i "s|cloud1111/jenkins-flask-app-demo:.*|cloud1111/jenkins-flask-app-demo:${BUILD_NUMBER}|g" deployment.yaml
