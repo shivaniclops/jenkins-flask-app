@@ -56,7 +56,8 @@ pipeline {
                 withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                     sh """
                         git clone https://${GITHUB_TOKEN}@github.com/shivaniclops/flask-manifest.git
-                        cd flask-manifest & sed -i "s/cloud1111\/jenkins-flask-app-demo:.*/cloud1111\/jenkins-flask-app-demo:${BUILD_NUMBER}/g" deployment.yaml
+                         // cd flask-manifest & sed -i "s/cloud1111\/jenkins-flask-app-demo:.*/cloud1111\/jenkins-flask-app-demo:${BUILD_NUMBER}/g" deployment.yaml
+                        sed -i "s|cloud1111/jenkins-flask-app-demo:.*|cloud1111/jenkins-flask-app-demo:${BUILD_NUMBER}|g" deployment.yaml
                         git config user.email "shivanidalvi85@gmail.com" ## replace with your github useremail
                         git config user.name "shivani"            ## replace with your github usernamename
                         git add deployment.yml
