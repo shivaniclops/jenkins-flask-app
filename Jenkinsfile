@@ -57,6 +57,7 @@ pipeline {
                     cleanWs()
                     sh """
                         git clone https://${GITHUB_TOKEN}@github.com/shivaniclops/flask-manifest.git
+                        cd flask-manifest
                         sed -i "s|cloud1111/jenkins-flask-app-demo:.*|cloud1111/jenkins-flask-app-demo:${BUILD_NUMBER}|g" deployment.yaml
                         git config user.email "shivani.d@cloudifyops.com" ## replace with your github useremail
                         git config user.name "shivaniclops"            ## replace with your github usernamename
